@@ -3,7 +3,7 @@ use hpo::HpoTermId;
 use hpo::similarity::{Similarity, StandardCombiner, GroupSimilarity};
 use::hpo::{Ontology, HpoSet};
 use::hpo::term::HpoGroup;
-mod custom_jaccard;
+mod custom_jaccard_ic;
 
 fn main() {
     //the first list of HPO terms
@@ -45,7 +45,7 @@ fn main() {
     let hpo_group3 = HpoGroup::from(hpo_ids3);
     let hpo_set3 = HpoSet::new(&ontology, hpo_group3);
 
-    let sim = GroupSimilarity::new(StandardCombiner::default(), custom_jaccard::CustomJaccard{});
+    let sim = GroupSimilarity::new(StandardCombiner::default(), custom_jaccard_ic::CustomJaccardIC{});
     //start a timer to see how long it takes to calculate the first
     let start = std::time::Instant::now();
     let similarity1_2 = sim.calculate(&hpo_set1, &hpo_set2);

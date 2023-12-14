@@ -1,9 +1,9 @@
 use hpo::HpoTerm;
 use hpo::similarity::Similarity;
 
-pub struct CustomJaccard {}
+pub struct CustomJaccardIC {}
 
-impl Similarity for CustomJaccard {
+impl Similarity for CustomJaccardIC {
     fn calculate(&self, a: &HpoTerm, b: &HpoTerm) -> f32 {
         //get the sum of the information content of each term in the union and intersection
         let union = a.union_ancestors(b);
